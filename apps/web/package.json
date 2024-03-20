@@ -9,9 +9,12 @@
     "lint": "eslint . --max-warnings 0"
   },
   "dependencies": {
-    "@repo/ui": "*",
     "@repo/types": "*",
+    "@repo/ui": "*",
+    "@tanstack/query-core": "^5.28.4",
     "@tanstack/react-query": "^5.28.4",
+    "@vanilla-extract/css": "^1.14.1",
+    "@vanilla-extract/recipes": "^0.5.2",
     "next": "^14.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -20,10 +23,13 @@
     "@next/eslint-plugin-next": "^14.1.1",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
+    "@tanstack/eslint-plugin-query": "^5.27.7",
+    "@tanstack/react-query-devtools": "^5.28.4",
     "@types/eslint": "^8.56.5",
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
+    "@vanilla-extract/next-plugin": "^2.3.7",
     "eslint": "^8.57.0",
     "typescript": "^5.3.3"
   }
