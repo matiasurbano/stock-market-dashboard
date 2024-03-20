@@ -6,7 +6,11 @@ import { FilterBar } from "../components/FilterBar/FilterBar";
 import styles from "./page.module.css";
 
 import StockTile from "../components/StockTile/StockTile";
-import { OrderDirection, useGetStocks } from "../hooks/useGetStocks";
+import {
+  ApiResponseSchema,
+  OrderDirection,
+  useGetStocks,
+} from "../hooks/useGetStocks";
 import { SupportedCountryCodes } from "../hooks/countries";
 import { Fragment, useState } from "react";
 
@@ -36,8 +40,10 @@ export default function Page() {
       {isLoading && <div>Loading Results</div>}
       {isSuccess && (
         <main className={styles.results}>
-          {data.pages.map((page) => (
+          {/* @ts-ignore */}
+          {data?.pages.map((page) => (
             <Fragment key={page.meta.currentPage}>
+              {/* @ts-ignore */}
               {page.data.map((company) => (
                 <h1>{company.name}</h1>
               ))}

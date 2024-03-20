@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, QueryClient } from "@tanstack/react-query";
 import { SupportedCountryCodes } from "./countries";
 
 const PAGE_SIZE = 40;
@@ -11,6 +11,37 @@ export enum OrderDirection {
 export const ORDER_DIRECTION_LABELS = {
   [OrderDirection.DESC]: "Descending",
   [OrderDirection.ASC]: "Ascending",
+};
+
+export type ScoreSchema = {
+  value: number;
+  future: number;
+  past: number;
+  health: number;
+  income: number;
+  total: number;
+  sentence: string;
+};
+
+export type CompanyDataSchema = {
+  id: number;
+  name: string;
+  slug: string;
+  unique_symbol: string;
+  canonical_url: string;
+  score: {
+    data: ScoreSchema;
+  };
+};
+
+export type DataSchema = CompanyDataSchema[];
+export type MetaSchema = {
+  total_records: number;
+};
+
+export type ApiResponseSchema = {
+  data: DataSchema;
+  meta: MetaSchema;
 };
 
 export const fetchStocks = async ({
@@ -53,7 +84,7 @@ export const fetchStocks = async ({
     }
   );
 
-  const data = await res.json();
+  const data: ApiResponseSchema = await res.json();
 
   try {
     return {
@@ -61,7 +92,7 @@ export const fetchStocks = async ({
       meta: {
         ...data.meta,
         currentPage: page,
-        totalPages: Math.ceil(data.meta.totalRecords / PAGE_SIZE),
+        totalPages: Math.ceil(data.meta.total_records / PAGE_SIZE),
       },
     };
   } catch (error: unknown) {
@@ -79,7 +110,7 @@ export const useGetStocks = ({
   sortOrder: OrderDirection;
 }): ReturnType<typeof useInfiniteQuery> => {
   return useInfiniteQuery({
-    queryKey: ["stocks"],
+    queryKey: ["data"],
     queryFn: ({ pageParam: page = 1 }) =>
       fetchStocks({
         countryCode,
@@ -88,8 +119,10 @@ export const useGetStocks = ({
       }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) =>
-      lastPage.meta.currentPage < lastPage.meta.totalPages
-        ? lastPage.meta.currentPage + 1
+      lastPage
+        ? lastPage.meta.currentPage < lastPage.meta.totalPages
+          ? lastPage.meta.currentPage + 1
+          : undefined
         : undefined,
   });
 };
