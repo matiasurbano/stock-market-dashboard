@@ -1,39 +1,7 @@
 "use client";
-// import { useMemo } from "react";
-import {
-  PolarAngleAxis,
-  PolarGrid,
-  PolarRadiusAxis,
-  Radar,
-  RadarChart,
-  ResponsiveContainer,
-} from "recharts";
-
-// import { ScoreResponse } from "../../server/SimplyWallStreet/types";
-// import * as styles from "./snowflakeScoreGraph.css";
-
-// const getGraphData = (score: ScoreResponse) => [
-//   {
-//     subject: "Valuation",
-//     successfulChecks: score.valuation,
-//   },
-//   {
-//     subject: "Future Growth",
-//     successfulChecks: score.futureGrowth,
-//   },
-//   {
-//     subject: "Past Performance",
-//     successfulChecks: score.pastPerformance,
-//   },
-//   {
-//     subject: "Financial health",
-//     successfulChecks: score.financialHealth,
-//   },
-//   {
-//     subject: "Dividend",
-//     successfulChecks: score.dividend,
-//   },
-// ];
+import { Score } from "@repo/types";
+import { useMemo } from "react";
+import { PolarGrid, Radar, RadarChart, ResponsiveContainer } from "recharts";
 
 const calculateColorFromTotalScore = (totalScore: number) => {
   const MAX_SCORE = 30;
@@ -41,82 +9,48 @@ const calculateColorFromTotalScore = (totalScore: number) => {
   return `hsl(${hue}, 100%, 50%)`;
 };
 
-// type SnowflakeScoreProps = {
-//   score: ScoreResponse;
-// };
-
-const chartData = [
+const getGraphData = (score: Score) => [
   {
-    subject: "Math",
-    A: 120,
-    B: 110,
-    fullMark: 150,
+    subject: "Valuation",
+    successfulChecks: score.value,
   },
   {
-    subject: "Chinese",
-    A: 98,
-    B: 130,
-    fullMark: 150,
+    subject: "Future Growth",
+    successfulChecks: score.future,
   },
   {
-    subject: "English",
-    A: 86,
-    B: 130,
-    fullMark: 150,
+    subject: "Past Performance",
+    successfulChecks: score.past,
   },
   {
-    subject: "Geography",
-    A: 99,
-    B: 100,
-    fullMark: 150,
+    subject: "Financial health",
+    successfulChecks: score.health,
   },
   {
-    subject: "Physics",
-    A: 85,
-    B: 90,
-    fullMark: 150,
-  },
-  {
-    subject: "History",
-    A: 65,
-    B: 85,
-    fullMark: 150,
+    subject: "Dividend",
+    successfulChecks: score.income,
   },
 ];
 
-// export const SnowflakeScore: React.FC<SnowflakeScoreProps> = ({ score }) => {
-export const SnowflakeScore: React.FC = () => {
-  //   const chartData = useMemo(() => getGraphData(score), [score]);
-  //   const fillColor = useMemo(
-  //     () => calculateColorFromTotalScore(score.total),
-  //     [score.total]
-  //   );
+type SnowflakeScoreProps = {
+  score: Score;
+};
+
+export const SnowflakeScore: React.FC<SnowflakeScoreProps> = ({ score }) => {
+  const chartData = useMemo(() => getGraphData(score), [score]);
+  const fillColor = useMemo(
+    () => calculateColorFromTotalScore(score.total),
+    [score.total]
+  );
 
   return (
     <>
       <ResponsiveContainer aspect={1} width={"100%"}>
         <RadarChart outerRadius={"80%"} data={chartData}>
-          {/* <PolarGrid gridType="circle" />
+          <PolarGrid gridType="circle" />
           <Radar
             dataKey="successfulChecks"
             fill={fillColor}
-            fillOpacity={0.6}
-          /> */}
-          <PolarGrid />
-          <PolarAngleAxis dataKey="subject" />
-          <PolarRadiusAxis angle={30} domain={[0, 150]} />
-          <Radar
-            name="Mike"
-            dataKey="A"
-            stroke="#8884d8"
-            fill="#8884d8"
-            fillOpacity={0.6}
-          />
-          <Radar
-            name="Lily"
-            dataKey="B"
-            stroke="#82ca9d"
-            fill="#82ca9d"
             fillOpacity={0.6}
           />
         </RadarChart>

@@ -1,24 +1,13 @@
-"use client";
-import { useEffect, useState } from "react";
+import * as styles from "./StockTile.css";
 
-export default function (): JSX.Element {
-  return (
-    <div>
-      <h1>Data</h1>
-    </div>
-  );
-}
-
-// import * as styles from "./companyTile.css";
-
-type CompanyTileProps = {
+type StockTileProps = {
   name: string;
   uniqueSymbol: string;
   url: string;
   renderGraph: () => React.ReactNode;
 };
 
-export const CompanyTile: React.FC<CompanyTileProps> = ({
+export const StockTile: React.FC<StockTileProps> = ({
   url,
   name,
   uniqueSymbol,

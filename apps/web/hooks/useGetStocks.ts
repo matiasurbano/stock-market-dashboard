@@ -1,5 +1,6 @@
 import { useInfiniteQuery, QueryClient } from "@tanstack/react-query";
 import { SupportedCountryCodes } from "./countries";
+import { CompanyData } from "@repo/types";
 
 const PAGE_SIZE = 40;
 
@@ -13,28 +14,7 @@ export const ORDER_DIRECTION_LABELS = {
   [OrderDirection.ASC]: "Ascending",
 };
 
-export type ScoreSchema = {
-  value: number;
-  future: number;
-  past: number;
-  health: number;
-  income: number;
-  total: number;
-  sentence: string;
-};
-
-export type CompanyDataSchema = {
-  id: number;
-  name: string;
-  slug: string;
-  unique_symbol: string;
-  canonical_url: string;
-  score: {
-    data: ScoreSchema;
-  };
-};
-
-export type DataSchema = CompanyDataSchema[];
+export type DataSchema = CompanyData[];
 export type MetaSchema = {
   currentPage: number;
   totalPages: number;
@@ -86,7 +66,16 @@ export const fetchStocks = async ({
         }),
       }
     );
-    return await res.json();
+    const result = await res.json();
+
+    return {
+      ...result,
+      meta: {
+        ...result.meta,
+        currentPage: page,
+        totalPages: Math.ceil(result.meta.totalRecords / PAGE_SIZE),
+      },
+    };
   } catch (error: unknown) {
     if (error) {
       throw error;

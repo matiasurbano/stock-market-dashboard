@@ -6,6 +6,8 @@ import * as styles from "./page.css";
 import { Fragment, useState } from "react";
 import { SupportedCountryCodes } from "../hooks/countries";
 import { OrderDirection, useGetStocks } from "../hooks/useGetStocks";
+import { StockTile } from "../components/StockTile/StockTile";
+import { SnowflakeScore } from "@repo/ui/snowflake";
 
 const workspace: Workspace = {
   name: "web",
@@ -43,8 +45,14 @@ export default function Page() {
           {data?.pages.map((page) => (
             <Fragment key={page.meta.currentPage}>
               {/* @ts-ignore */}
-              {page.data.map((company) => (
-                <h1>{company.name}</h1>
+              {page.data.map((company, index) => (
+                <StockTile
+                  key={`${company.id}-${index}`}
+                  name={company.name}
+                  uniqueSymbol={company.uniqueSymbol}
+                  url={company.canonicalUrl}
+                  renderGraph={() => <SnowflakeScore score={company.score} />}
+                />
               ))}
             </Fragment>
           ))}
