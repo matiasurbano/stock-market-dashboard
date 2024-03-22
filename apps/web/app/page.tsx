@@ -1,23 +1,18 @@
 "use client";
-import { Workspace } from "@repo/types";
-import { Button } from "@repo/ui/button";
-import { SnowflakeScore } from "@repo/ui/snowflake";
+import { CountryOption, Workspace } from "@repo/types";
 import { FilterBar } from "../components/FilterBar/FilterBar";
-import styles from "./page.module.css";
+import * as styles from "./page.css";
 
-import StockTile from "../components/StockTile/StockTile";
-import {
-  ApiResponseSchema,
-  OrderDirection,
-  useGetStocks,
-} from "../hooks/useGetStocks";
-import { SupportedCountryCodes } from "../hooks/countries";
 import { Fragment, useState } from "react";
+import { SupportedCountryCodes } from "../hooks/countries";
+import { OrderDirection, useGetStocks } from "../hooks/useGetStocks";
 
 const workspace: Workspace = {
   name: "web",
   version: "2",
 };
+
+const defaultCountryOption: CountryOption = { id: "AU", name: "Australia" };
 
 export default function Page() {
   const [countryCode, setCountryCode] = useState<SupportedCountryCodes>(
@@ -36,7 +31,11 @@ export default function Page() {
   } = useGetStocks({ countryCode, sortOrder });
 
   return (
-    <main className={styles.main}>
+    <main className={styles.container}>
+      <div className={styles.filterBar}>
+        <FilterBar />
+      </div>
+
       {isLoading && <div>Loading Results</div>}
       {isSuccess && (
         <main className={styles.results}>
@@ -62,15 +61,6 @@ export default function Page() {
           </button>
         </footer>
       )}
-
-      <FilterBar />
-      <Button appName="asdsad">Click me</Button>
-      {/* StockList */}
-      <SnowflakeScore />
-
-      {/* <Suspense fallback={<h1>$$$$$######################################</h1>}> */}
-      <StockTile />
-      {/* </Suspense> */}
     </main>
   );
 }

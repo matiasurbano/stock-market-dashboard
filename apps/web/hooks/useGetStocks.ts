@@ -36,6 +36,8 @@ export type CompanyDataSchema = {
 
 export type DataSchema = CompanyDataSchema[];
 export type MetaSchema = {
+  currentPage: number;
+  totalPages: number;
   total_records: number;
 };
 
@@ -52,49 +54,39 @@ export const fetchStocks = async ({
   sortOrder: OrderDirection;
   countryCode: SupportedCountryCodes;
   page: number;
-}) => {
-  console.log(PAGE_SIZE * (page - 1));
-  const res = await fetch(
-    "https://simplywall.st/api/grid/filter?include=grid,score",
-    {
-      method: "post",
-      headers: {
-        sws: "fe-challenge",
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      // In an effort not to over engineer this, we will only type and change the in-scope variables
-      body: JSON.stringify({
-        id: "0",
-        no_result_if_limit: false,
-        offset: PAGE_SIZE * (page - 1),
-        size: PAGE_SIZE,
-        state: "read",
-        rules: [
-          ["order_by", "market_cap", sortOrder],
-          ["grid_visible_flag", "=", true],
-          ["market_cap", "is_not_null"],
-          ["primary_flag", "=", true],
-          ["is_fund", "=", false],
-          ...(countryCode !== SupportedCountryCodes.XX
-            ? [["aor", [["country_name", "in", [countryCode]]]]]
-            : []),
-        ],
-      }),
-    }
-  );
-
-  const data: ApiResponseSchema = await res.json();
-
+}): Promise<ApiResponseSchema | undefined> => {
   try {
-    return {
-      ...data,
-      meta: {
-        ...data.meta,
-        currentPage: page,
-        totalPages: Math.ceil(data.meta.total_records / PAGE_SIZE),
-      },
-    };
+    console.log(PAGE_SIZE * (page - 1));
+    const res = await fetch(
+      "https://simplywall.st/api/grid/filter?include=grid,score",
+      {
+        method: "post",
+        headers: {
+          sws: "fe-challenge",
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        // In an effort not to over engineer this, we will only type and change the in-scope variables
+        body: JSON.stringify({
+          id: "0",
+          no_result_if_limit: false,
+          offset: PAGE_SIZE * (page - 1),
+          size: PAGE_SIZE,
+          state: "read",
+          rules: [
+            ["order_by", "market_cap", sortOrder],
+            ["grid_visible_flag", "=", true],
+            ["market_cap", "is_not_null"],
+            ["primary_flag", "=", true],
+            ["is_fund", "=", false],
+            ...(countryCode !== SupportedCountryCodes.XX
+              ? [["aor", [["country_name", "in", [countryCode]]]]]
+              : []),
+          ],
+        }),
+      }
+    );
+    return await res.json();
   } catch (error: unknown) {
     if (error) {
       throw error;

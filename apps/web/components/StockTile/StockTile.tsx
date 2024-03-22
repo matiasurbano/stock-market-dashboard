@@ -8,3 +8,35 @@ export default function (): JSX.Element {
     </div>
   );
 }
+
+// import * as styles from "./companyTile.css";
+
+type CompanyTileProps = {
+  name: string;
+  uniqueSymbol: string;
+  url: string;
+  renderGraph: () => React.ReactNode;
+};
+
+export const CompanyTile: React.FC<CompanyTileProps> = ({
+  url,
+  name,
+  uniqueSymbol,
+  renderGraph,
+}) => {
+  return (
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href={`https://simplywall.st${url}`}
+      className={styles.root}
+      aria-label={`Open ${name} stock page in a new tab`}
+    >
+      <div className={styles.graph}>{renderGraph()}</div>
+      <div className={styles.info}>
+        <h2 className={styles.title}>{uniqueSymbol}</h2>
+        <h3 className={styles.lead}>{name}</h3>
+      </div>
+    </a>
+  );
+};
