@@ -41,8 +41,6 @@ export const CountrySelect: FC<CountrySelectProps> = ({
     countries.getNames("en", { select: "official" })
   ).map(([id, name]) => ({ id, name }) as CountryOption);
 
-  console.log(list);
-
   const {
     isOpen,
     selectedItem,

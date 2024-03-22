@@ -1,6 +1,5 @@
-import { useInfiniteQuery, QueryClient } from "@tanstack/react-query";
-import { SupportedCountryCodes } from "./countries";
 import { CompanyData } from "@repo/types";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 const PAGE_SIZE = 40;
 
@@ -32,7 +31,7 @@ export const fetchStocks = async ({
   page,
 }: {
   sortOrder: OrderDirection;
-  countryCode: SupportedCountryCodes;
+  countryCode: string;
   page: number;
 }): Promise<ApiResponseSchema | undefined> => {
   try {
@@ -59,7 +58,7 @@ export const fetchStocks = async ({
             ["market_cap", "is_not_null"],
             ["primary_flag", "=", true],
             ["is_fund", "=", false],
-            ...(countryCode !== SupportedCountryCodes.XX
+            ...(countryCode !== "XX"
               ? [["aor", [["country_name", "in", [countryCode]]]]]
               : []),
           ],
@@ -87,11 +86,11 @@ export const useGetStocks = ({
   countryCode,
   sortOrder,
 }: {
-  countryCode: SupportedCountryCodes;
+  countryCode: string;
   sortOrder: OrderDirection;
 }): ReturnType<typeof useInfiniteQuery> => {
   return useInfiniteQuery({
-    queryKey: ["data"],
+    queryKey: ["stocks", countryCode, sortOrder],
     queryFn: ({ pageParam: page = 1 }) =>
       fetchStocks({
         countryCode,

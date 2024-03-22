@@ -32,11 +32,11 @@ const getGraphData = (score: Score) => [
   },
 ];
 
-type SnowflakeScoreProps = {
+type SnowflakeProps = {
   score: Score;
 };
 
-export const SnowflakeScore: React.FC<SnowflakeScoreProps> = ({ score }) => {
+export const Snowflake: React.FC<SnowflakeProps> = ({ score }) => {
   const chartData = useMemo(() => getGraphData(score), [score]);
   const fillColor = useMemo(
     () => calculateColorFromTotalScore(score.total),

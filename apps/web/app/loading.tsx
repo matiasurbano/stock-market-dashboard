@@ -4,7 +4,7 @@ import StockTileLoading from "../components/StockTile/StockTileLoading";
 
 export default function Page(): JSX.Element {
   return (
-    <main className={styles.root}>
+    <main className={styles.container}>
       <StockTileLoading />
       <StockTileLoading />
     </main>

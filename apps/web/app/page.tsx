@@ -1,25 +1,18 @@
 "use client";
-import { CountryOption, Workspace } from "@repo/types";
+import { CountryOption } from "@repo/types";
 import { FilterBar } from "../components/FilterBar/FilterBar";
 import * as styles from "./page.css";
 
 import { Fragment, useState } from "react";
-import { SupportedCountryCodes } from "../hooks/countries";
 import { OrderDirection, useGetStocks } from "../hooks/useGetStocks";
 import { StockTile } from "../components/StockTile/StockTile";
-import { SnowflakeScore } from "@repo/ui/snowflake";
-
-const workspace: Workspace = {
-  name: "web",
-  version: "2",
-};
+import { Snowflake } from "@repo/ui/snowflake";
 
 const defaultCountryOption: CountryOption = { id: "AU", name: "Australia" };
 
 export default function Page() {
-  const [countryCode, setCountryCode] = useState<SupportedCountryCodes>(
-    SupportedCountryCodes.XX
-  );
+  const [countryCode, setCountryCode] =
+    useState<CountryOption>(defaultCountryOption);
   const [sortOrder, setSortOrder] = useState<OrderDirection>(
     OrderDirection.DESC
   );
@@ -30,7 +23,7 @@ export default function Page() {
     fetchNextPage,
     data,
     isLoading,
-  } = useGetStocks({ countryCode, sortOrder });
+  } = useGetStocks({ countryCode: countryCode?.id, sortOrder });
 
   return (
     <main className={styles.container}>
@@ -49,9 +42,9 @@ export default function Page() {
                 <StockTile
                   key={`${company.id}-${index}`}
                   name={company.name}
-                  uniqueSymbol={company.uniqueSymbol}
-                  url={company.canonicalUrl}
-                  renderGraph={() => <SnowflakeScore score={company.score} />}
+                  uniqueSymbol={company.unique_symbol}
+                  url={company.canonical_url}
+                  renderGraph={() => <Snowflake score={company.score.data} />}
                 />
               ))}
             </Fragment>
