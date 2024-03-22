@@ -4,7 +4,7 @@ import { CountryOption } from "@repo/types";
 
 type FilterBarProps = {};
 
-const defaultCountryOption: CountryOption = { id: "AU", name: "Australia" };
+const defaultCountryOption: CountryOption = { id: "XX", name: "Global" };
 const defaultCountryOption2: CountryOption = { id: "US", name: "USA" };
 
 export const FilterBar: React.FC<FilterBarProps> = () => {

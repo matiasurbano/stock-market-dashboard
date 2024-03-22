@@ -18,15 +18,14 @@ type CountryIconProps = {
   countryCode: string;
 };
 
-const CountryIcon: React.FC<CountryIconProps> = ({ countryCode }) => {
-  if (!countryCode || countryCode === "XX") return null;
-  return (
-    <img
-      className={styles.countryIcon}
-      alt={`Flag of ${countries.getName("US", "en")}`}
-      src={`https://flagsapi.com/${countryCode.toUpperCase()}/flat/64.png`}
-    />
+const getFlagEmoji = (countryCode: any) =>
+  String.fromCodePoint(
+    ...[...countryCode.toUpperCase()].map((x) => 0x1f1a5 + x.charCodeAt())
   );
+
+const CountryIcon: React.FC<CountryIconProps> = ({ countryCode }) => {
+  if (!countryCode || countryCode === "XX") return "🌏";
+  return <>{getFlagEmoji(countryCode)}</>;
 };
 
 export const CountrySelect: FC<CountrySelectProps> = ({
@@ -88,7 +87,7 @@ export const CountrySelect: FC<CountrySelectProps> = ({
               {...getItemProps({ item, index })}
             >
               <span className={styles.listItemLabel}>
-                <CountryIcon countryCode={selectedItem?.id || ""} /> {item.name}
+                <CountryIcon countryCode={item?.id || ""} /> {item.name}
               </span>
             </li>
           ))}

@@ -1,7 +1,7 @@
 import { CompanyData } from "@repo/types";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-const PAGE_SIZE = 40;
+const PAGE_SIZE = 24;
 
 export enum OrderDirection {
   ASC = "asc",
@@ -98,6 +98,7 @@ export const useGetStocks = ({
         page,
       }),
     initialPageParam: 1,
+    refetchOnWindowFocus: false,
     getNextPageParam: (lastPage) =>
       lastPage
         ? lastPage.meta.currentPage < lastPage.meta.totalPages

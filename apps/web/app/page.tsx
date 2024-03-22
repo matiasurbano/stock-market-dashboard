@@ -8,7 +8,7 @@ import { OrderDirection, useGetStocks } from "../hooks/useGetStocks";
 import { StockTile } from "../components/StockTile/StockTile";
 import { Snowflake } from "@repo/ui/snowflake";
 
-const defaultCountryOption: CountryOption = { id: "AU", name: "Australia" };
+const defaultCountryOption: CountryOption = { id: "XX", name: "Global" };
 
 export default function Page() {
   const [countryCode, setCountryCode] =
