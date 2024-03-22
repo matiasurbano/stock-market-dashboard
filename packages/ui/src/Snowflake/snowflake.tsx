@@ -1,7 +1,15 @@
 "use client";
 import { Score } from "@repo/types";
 import { useMemo } from "react";
-import { PolarGrid, Radar, RadarChart, ResponsiveContainer } from "recharts";
+import {
+  Label,
+  PolarAngleAxis,
+  PolarGrid,
+  Radar,
+  RadarChart,
+  ResponsiveContainer,
+} from "recharts";
+import * as styles from "./Snowflake.css";
 
 const calculateColorFromTotalScore = (totalScore: number) => {
   const MAX_SCORE = 30;
@@ -46,12 +54,21 @@ export const Snowflake: React.FC<SnowflakeProps> = ({ score }) => {
   return (
     <>
       <ResponsiveContainer aspect={1} width={"100%"}>
-        <RadarChart outerRadius={"80%"} data={chartData}>
+        <RadarChart
+          outerRadius={"80%"}
+          data={chartData}
+          style={{ fontSize: "12px" }}
+        >
           <PolarGrid gridType="circle" />
+          <PolarAngleAxis dataKey="subject" orientation="outer">
+            <Label position="outside" />
+          </PolarAngleAxis>
+          {/* <PolarRadiusAxis angle={30} domain={[0, 150]} /> */}
           <Radar
             dataKey="successfulChecks"
             fill={fillColor}
             fillOpacity={0.6}
+            stroke="#2f2e42"
           />
         </RadarChart>
       </ResponsiveContainer>

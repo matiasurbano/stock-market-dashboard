@@ -6,7 +6,7 @@ import * as styles from "./page.css";
 import { Fragment, useState } from "react";
 import { OrderDirection, useGetStocks } from "../hooks/useGetStocks";
 import { StockTile } from "../components/StockTile/StockTile";
-import { Snowflake } from "@repo/ui/snowflake";
+import { Snowflake } from "../../../packages/ui/src/Snowflake/Snowflake";
 
 const defaultCountryOption: CountryOption = { id: "XX", name: "Global" };
 

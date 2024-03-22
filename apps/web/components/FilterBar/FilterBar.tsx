@@ -13,12 +13,12 @@ export const FilterBar: React.FC<FilterBarProps> = () => {
       <div className={styles.filters}>
         <div className={styles.filterGroup}>
           <CountrySelect
-            label="by country"
+            label=""
             onCountrySelect={(countryCode) => console.log(countryCode)}
             selectedCountryCode={defaultCountryOption}
           />
           <CountrySelect
-            label="by country2"
+            label=""
             onCountrySelect={(countryCode) => console.log(countryCode)}
             selectedCountryCode={defaultCountryOption2}
           />

@@ -33,6 +33,23 @@ export const trigger = style({
   ":focus": {
     outline: vars.focus,
   },
+  height: "32px",
+  paddingTop: "0px",
+  paddingRight: "36px",
+  paddingBottom: "0px",
+  paddingLeft: "12px",
+});
+
+export const chevron = style({
+  display: "inline",
+  fill: "black",
+  opacity: 0.5,
+  width: "24px",
+  height: "22px",
+  verticalAlign: "middle",
+  margin: "0px",
+  position: "absolute",
+  right: "8px",
 });
 
 export const listItem = recipe({

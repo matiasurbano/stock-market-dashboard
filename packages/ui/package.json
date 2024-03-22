@@ -4,10 +4,11 @@
   "private": true,
   "exports": {
     "./theme": "./src/theme.css.ts",
+    "./styles": "./src/styles.css.ts",
     "./button": "./src/Button/Button.tsx",
     "./card": "./src/card.tsx",
     "./code": "./src/code.tsx",
-    "./snowflake": "./src/snowflake/snowflake.tsx",
+    "./snowflake": "./src/Snowflake/Snowflake.tsx",
     "./country-select": "./src/CountrySelect/CountrySelect.tsx"
   },
   "scripts": {

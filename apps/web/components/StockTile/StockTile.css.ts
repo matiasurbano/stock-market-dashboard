@@ -1,18 +1,17 @@
-import { style } from "@vanilla-extract/css";
+import { keyframes, style } from "@vanilla-extract/css";
 
 import { vars } from "@repo/ui/theme";
 
 export const root = style({
-  alignItems: "center",
-  background: vars.color.white,
+  // background: vars.color.black,
   borderRadius: vars.border.radius,
-  boxShadow: vars.boxShadow.light,
-  display: "flex",
-  flexDirection: "column",
-  padding: vars.spacing.medium,
-  textAlign: "center",
+  boxShadow: vars.boxShadow.dark,
+  // color: vars.color.white,
+  display: "grid",
+  padding: "12px 12px 12px 16px",
   textDecoration: "none",
   transition: "box-shadow 0.2s ease",
+  fontSize: ".5rem",
 
   ":hover": {
     boxShadow: vars.boxShadow.dark,
@@ -20,23 +19,22 @@ export const root = style({
 });
 
 export const graph = style({
-  display: "flex",
-  height: 100,
-  width: 100,
+  display: "grid",
+  height: 200,
+  width: 200,
+  placeSelf: "center",
 });
 
 export const info = style({
-  alignItems: "center",
-  display: "flex",
+  display: "grid",
+  textAlign: "left",
   flexDirection: "column",
   gap: vars.spacing.small,
-  justifyItems: "center",
+
   marginBottom: vars.spacing.medium,
 });
 
 export const title = style({
-  color: vars.color.primary,
-  fontWeight: "bold",
   margin: 0,
   padding: 0,
 });

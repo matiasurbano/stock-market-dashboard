@@ -4,7 +4,7 @@ export const vars = createGlobalTheme(":root", {
   color: {
     primary: "#414d69",
     secondary: "#FF4049",
-    black: "#28292F",
+    black: "#151B24",
     gray: "#CBD5E0",
     white: "#FFFFFF",
     offWhite: "#FAF9F6",
@@ -16,7 +16,7 @@ export const vars = createGlobalTheme(":root", {
   },
   border: {
     radius: "8px",
-    border: "1px solid #28292F",
+    border: "1px solid #151B24",
   },
   focus: "5px auto -webkit-focus-ring-color",
   boxShadow: {

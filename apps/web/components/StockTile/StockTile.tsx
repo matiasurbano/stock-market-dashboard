@@ -22,10 +22,12 @@ export const StockTile: React.FC<StockTileProps> = ({
       className={styles.root}
       aria-label={`Open ${name} stock page in a new tab`}
     >
+      <div className={styles.info}>
+        <h2 className={styles.title}>{name}</h2>
+      </div>
       <div className={styles.graph}>{renderGraph()}</div>
       <div className={styles.info}>
-        <h2 className={styles.title}>{uniqueSymbol}</h2>
-        <h3 className={styles.lead}>{name}</h3>
+        <h2 className={styles.lead}>{uniqueSymbol}</h2>
       </div>
     </a>
   );
