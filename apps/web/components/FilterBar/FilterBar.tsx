@@ -1,11 +1,9 @@
 import { CountrySelect } from "@repo/ui/country-select";
-import * as styles from "./FilterBar.css";
-import { CountryOption } from "@repo/types";
 import { Select, SelectItem } from "@repo/ui/select";
+import * as styles from "./FilterBar.css";
+import { useDashboardContext } from "../../hooks/DashboardContext";
 
 type FilterBarProps = {};
-
-const defaultCountryOption: CountryOption = { id: "XX", name: "Global" };
 
 const sortOptions: SelectItem[] = [
   { id: "DESC", name: "High to low" },
@@ -13,20 +11,26 @@ const sortOptions: SelectItem[] = [
 ];
 
 export const FilterBar: React.FC<FilterBarProps> = () => {
+  const {
+    marketCountry,
+    handleMarketCountry,
+    marketCapSort,
+    handleMarketCapSort,
+  } = useDashboardContext();
   return (
     <header className={styles.root}>
       <div className={styles.filters}>
         <div className={styles.filterGroup}>
           <CountrySelect
             label="Market country"
-            onCountrySelect={(countryCode) => console.log(countryCode)}
-            selectedCountryCode={defaultCountryOption}
+            onCountrySelect={(countryCode) => handleMarketCountry(countryCode)}
+            selectedCountryCode={marketCountry}
           />
           <Select
             label="Sort by market cap"
             items={sortOptions}
-            onItemSelect={(selectedItem) => console.log(selectedItem)}
-            selectedItemOption={sortOptions[0]}
+            onItemSelect={(selectedItem) => handleMarketCapSort(selectedItem)}
+            selectedItemOption={marketCapSort}
           />
         </div>
       </div>
