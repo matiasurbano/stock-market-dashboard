@@ -3,6 +3,7 @@ import { useSelect } from "downshift";
 import countries from "i18n-iso-countries";
 import { FC } from "react";
 import * as styles from "./CountrySelect.css";
+import { SupportedCountryCodes } from "./supported-countries";
 
 // Support english languages.
 countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
@@ -56,7 +57,10 @@ export const CountrySelect: FC<CountrySelectProps> = ({
 
   const list: CountryOption[] = Object.entries(
     countries.getNames("en", { select: "official" })
-  ).map(([id, name]) => ({ id, name }) as CountryOption);
+  )
+    .map(([id, name]) => ({ id, name }) as CountryOption)
+    .filter((country) => SupportedCountryCodes.includes(country.id))
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   const {
     isOpen,

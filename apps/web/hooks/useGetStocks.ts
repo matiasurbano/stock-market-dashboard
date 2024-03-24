@@ -3,16 +3,6 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 
 const PAGE_SIZE = 24;
 
-export enum OrderDirection {
-  ASC = "asc",
-  DESC = "desc",
-}
-
-export const ORDER_DIRECTION_LABELS = {
-  [OrderDirection.DESC]: "Descending",
-  [OrderDirection.ASC]: "Ascending",
-};
-
 export type DataSchema = CompanyData[];
 export type MetaSchema = {
   currentPage: number;
@@ -30,7 +20,7 @@ export const fetchStocks = async ({
   countryCode,
   page,
 }: {
-  sortOrder: OrderDirection;
+  sortOrder: string;
   countryCode: string;
   page: number;
 }): Promise<ApiResponseSchema | undefined> => {
@@ -87,7 +77,7 @@ export const useGetStocks = ({
   sortOrder,
 }: {
   countryCode: string;
-  sortOrder: OrderDirection;
+  sortOrder: string;
 }): ReturnType<typeof useInfiniteQuery> => {
   return useInfiniteQuery({
     queryKey: ["stocks", countryCode, sortOrder],

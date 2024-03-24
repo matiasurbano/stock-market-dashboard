@@ -1,21 +1,19 @@
 "use client";
-import { Fragment, useState } from "react";
-import * as styles from "./Stocks.css";
-import { StockTile } from "../StockTile/StockTile";
-import { Snowflake } from "@repo/ui/snowflake";
-import { OrderDirection, useGetStocks } from "../../hooks/useGetStocks";
 import { CountryOption } from "@repo/types";
+import { Snowflake } from "@repo/ui/snowflake";
+import { Fragment } from "react";
+import { useDashboardContext } from "../../hooks/DashboardContext";
+import { useGetStocks } from "../../hooks/useGetStocks";
+import { StockTile } from "../StockTile/StockTile";
+import * as styles from "./Stocks.css";
 
 type StocksProps = {};
 
 const defaultCountryOption: CountryOption = { id: "XX", name: "Global" };
 
 export const Stocks: React.FC<StocksProps> = () => {
-  const [countryCode, setCountryCode] =
-    useState<CountryOption>(defaultCountryOption);
-  const [sortOrder, setSortOrder] = useState<OrderDirection>(
-    OrderDirection.DESC
-  );
+  const { marketCountry, marketCapSort } = useDashboardContext();
+  const sortOrder = marketCapSort?.id === "ASC" ? "asc" : "desc";
   const {
     isSuccess,
     hasNextPage,
@@ -23,7 +21,7 @@ export const Stocks: React.FC<StocksProps> = () => {
     fetchNextPage,
     data,
     isLoading,
-  } = useGetStocks({ countryCode: countryCode?.id, sortOrder });
+  } = useGetStocks({ countryCode: marketCountry?.id, sortOrder });
 
   return (
     <>

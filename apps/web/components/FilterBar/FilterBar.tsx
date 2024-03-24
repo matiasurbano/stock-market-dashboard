@@ -6,8 +6,8 @@ import { useDashboardContext } from "../../hooks/DashboardContext";
 type FilterBarProps = {};
 
 const sortOptions: SelectItem[] = [
-  { id: "DESC", name: "High to low" },
-  { id: "ASC", name: "Low to high" },
+  { id: "desc", name: "High to low" },
+  { id: "asc", name: "Low to high" },
 ];
 
 export const FilterBar: React.FC<FilterBarProps> = () => {
