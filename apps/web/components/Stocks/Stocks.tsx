@@ -81,7 +81,7 @@ export const Stocks: React.FC<StocksProps> = () => {
             disabled={isFetchingNextPage || !hasNextPage}
             onClick={() => fetchNextPage()}
           >
-            {isFetchingNextPage ? "Loading" : "Load Next Page"}
+            {isFetchingNextPage ? "Loading" : "Load more"}
           </button>
         </footer>
       )}

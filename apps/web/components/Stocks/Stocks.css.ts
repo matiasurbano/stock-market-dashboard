@@ -16,19 +16,17 @@ export const footer = style({
 
 export const nextButton = style({
   alignItems: "center",
-  fontSize: "1rem",
-  background: vars.color.primary,
-  border: "unset",
+  background: vars.color.tertiary,
   borderRadius: vars.border.radius,
   color: vars.color.white,
   cursor: "pointer",
   display: "flex",
   justifyContent: "center",
   minWidth: "150px",
-  outline: "inherit",
   padding: `${vars.spacing.medium} ${vars.spacing.large}`,
   textAlign: "center",
   ":disabled": {
-    background: vars.color.gray,
+    background: vars.color.offGray,
+    color: vars.color.black,
   },
 });
