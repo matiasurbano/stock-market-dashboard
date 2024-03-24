@@ -27,7 +27,6 @@ export const fetchStocks = async ({
   page: number;
 }): Promise<ApiResponseSchema | undefined> => {
   try {
-    console.log(PAGE_SIZE * (page - 1));
     const res = await fetch(SWT_BASE_URL, {
       method: "post",
       headers: {
