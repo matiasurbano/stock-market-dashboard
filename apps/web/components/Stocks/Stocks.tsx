@@ -5,12 +5,12 @@ import { useDashboardContext } from "../../hooks/DashboardContext";
 import { useStocksDetails } from "../../hooks/useStocksDetails";
 import { StockTile } from "../StockTile/StockTile";
 import * as styles from "./Stocks.css";
+import { Button } from "@repo/ui/button";
 
 type StocksProps = {};
 
 type DataToFormat = {
   [x: string]: { [x: string]: any };
-  marketCap: number;
 };
 
 const BILLION = 1_000_000_000;
@@ -76,13 +76,12 @@ export const Stocks: React.FC<StocksProps> = () => {
       )}
       {!isLoading && (
         <footer className={styles.footer}>
-          <button
-            className={styles.nextButton}
+          <Button
             disabled={isFetchingNextPage || !hasNextPage}
-            onClick={() => fetchNextPage()}
+            handleOnClick={() => fetchNextPage()}
           >
             {isFetchingNextPage ? "Loading" : "Load more"}
-          </button>
+          </Button>
         </footer>
       )}
     </>

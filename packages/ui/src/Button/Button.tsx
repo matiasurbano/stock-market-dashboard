@@ -1,21 +1,19 @@
-"use client";
-
 import * as styles from "./Button.css";
-
-import { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 
 interface ButtonProps {
   children: ReactNode;
-  className?: string;
-  appName: string;
+  disabled?: boolean;
+  handleOnClick?: () => void;
 }
 
-export const Button = ({ children, appName }: ButtonProps) => {
+export const Button: FC<ButtonProps> = ({
+  disabled,
+  handleOnClick,
+  children,
+}) => {
   return (
-    <button
-      className={styles.root}
-      onClick={() => alert(`Hello from your ${appName} app!`)}
-    >
+    <button className={styles.root} disabled={disabled} onClick={handleOnClick}>
       {children}
     </button>
   );

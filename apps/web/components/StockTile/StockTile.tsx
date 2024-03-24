@@ -23,7 +23,7 @@ export const StockTile: React.FC<StockTileProps> = ({
         rel="noreferrer"
         href={`https://simplywall.st${url}`}
         className={styles.root}
-        aria-label={`Open ${name} stock page in a new tab`}
+        aria-description={`Open ${name} stock page in a new tab`}
       >
         <div className={styles.info}>
           <p className={styles.title} aria-label={`Company: ${name}`}>
