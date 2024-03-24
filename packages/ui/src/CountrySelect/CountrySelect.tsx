@@ -1,17 +1,16 @@
+import { CountryOption } from "@repo/types";
 import { useSelect } from "downshift";
-import countries, { Alpha2Code } from "i18n-iso-countries";
+import countries from "i18n-iso-countries";
 import { FC } from "react";
 import * as styles from "./CountrySelect.css";
-import { CountryOption } from "@repo/types";
 
 // Support english languages.
 countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
 
-type countryCode = Alpha2Code;
 type CountrySelectProps = {
   label: string;
   selectedCountryCode: CountryOption;
-  onCountrySelect: (countryCode: countryCode) => void;
+  onCountrySelect: (countryCode: CountryOption) => void;
 };
 
 type CountryIconProps = {
@@ -48,6 +47,7 @@ const CountryIcon: React.FC<CountryIconProps> = ({ countryCode }) => {
 
 export const CountrySelect: FC<CountrySelectProps> = ({
   selectedCountryCode,
+  onCountrySelect,
   label,
 }) => {
   const itemToString = (item: CountryOption | null) => {
@@ -70,6 +70,15 @@ export const CountrySelect: FC<CountrySelectProps> = ({
     items: list,
     itemToString,
     selectedItem: selectedCountryCode,
+    onSelectedItemChange: ({ selectedItem }) => {
+      onCountrySelect(
+        selectedItem ||
+          ({
+            id: "XX",
+            name: "Global",
+          } as CountryOption)
+      );
+    },
   });
 
   return (

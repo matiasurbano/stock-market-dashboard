@@ -5,7 +5,12 @@ import * as baseStyles from "../Select/Select.css";
 
 export const root = style([baseStyles.root, {}]);
 export const label = style([baseStyles.label, {}]);
-export const trigger = style([baseStyles.trigger, {}]);
+export const trigger = style([
+  baseStyles.trigger,
+  {
+    width: "300px",
+  },
+]);
 export const listItemLabel = style([baseStyles.listItemLabel, {}]);
 export const preview = style([baseStyles.preview, {}]);
 
@@ -63,7 +68,7 @@ export const list = recipe({
     marginTop: vars.spacing.small,
     padding: 0,
     position: "absolute",
-    width: "100%",
+    width: "300px",
     zIndex: 10,
     height: 200,
     overflow: "scroll",

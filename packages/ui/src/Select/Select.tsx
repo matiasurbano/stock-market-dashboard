@@ -30,6 +30,14 @@ export const Select: FC<SelectProps> = ({
   } = useSelect<SelectItem>({
     items,
     selectedItem: selectedItemOption,
+    onSelectedItemChange: ({ selectedItem }) => {
+      onItemSelect(
+        selectedItem || {
+          id: "DESC",
+          name: "High to low",
+        }
+      );
+    },
   });
 
   return (
