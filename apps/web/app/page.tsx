@@ -13,7 +13,7 @@ export default function Page() {
     name: "Global",
   });
   const [marketCapSort, setMarketCapSort] = useState<SelectItem>({
-    id: "DESC",
+    id: "desc",
     name: "High to low",
   });
 

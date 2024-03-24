@@ -72,13 +72,13 @@ export const fetchStocks = async ({
   }
 };
 
-export const useGetStocks = ({
+export function useStocksDetails({
   countryCode,
   sortOrder,
 }: {
   countryCode: string;
   sortOrder: string;
-}): ReturnType<typeof useInfiniteQuery> => {
+}): ReturnType<typeof useInfiniteQuery> {
   return useInfiniteQuery({
     queryKey: ["stocks", countryCode, sortOrder],
     queryFn: ({ pageParam: page = 1 }) =>
@@ -96,4 +96,4 @@ export const useGetStocks = ({
           : undefined
         : undefined,
   });
-};
+}
