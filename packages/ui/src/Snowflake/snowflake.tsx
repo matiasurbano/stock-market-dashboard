@@ -19,23 +19,23 @@ const calculateColorFromTotalScore = (totalScore: number) => {
 
 const getGraphData = (score: Score) => [
   {
-    subject: "Valuation",
+    subject: "Value",
     successfulChecks: score.value,
   },
   {
-    subject: "Future Growth",
+    subject: "Fut.",
     successfulChecks: score.future,
   },
   {
-    subject: "Past Performance",
+    subject: "Past",
     successfulChecks: score.past,
   },
   {
-    subject: "Financial health",
+    subject: "Health",
     successfulChecks: score.health,
   },
   {
-    subject: "Dividend",
+    subject: "Div.",
     successfulChecks: score.income,
   },
 ];
@@ -53,7 +53,7 @@ export const Snowflake: React.FC<SnowflakeProps> = ({ score }) => {
 
   return (
     <>
-      <ResponsiveContainer aspect={1} width={"100%"}>
+      <ResponsiveContainer aspect={1} width="100%">
         <RadarChart
           outerRadius={"80%"}
           data={chartData}
@@ -61,14 +61,15 @@ export const Snowflake: React.FC<SnowflakeProps> = ({ score }) => {
         >
           <PolarGrid gridType="circle" />
           <PolarAngleAxis dataKey="subject" orientation="outer">
-            <Label position="outside" />
+            <Label />
           </PolarAngleAxis>
-          {/* <PolarRadiusAxis angle={30} domain={[0, 150]} /> */}
+
           <Radar
             dataKey="successfulChecks"
             fill={fillColor}
-            fillOpacity={0.6}
-            stroke="#2f2e42"
+            fillOpacity={0.5}
+            stroke={fillColor}
+            strokeWidth={3}
           />
         </RadarChart>
       </ResponsiveContainer>
