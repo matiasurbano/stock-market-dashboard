@@ -1,6 +1,5 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
-
 import { vars } from "../theme.css";
 
 export const countryIcon = style({
@@ -11,6 +10,8 @@ export const root = style({
   width: "100%",
   maxWidth: "400px",
   position: "relative",
+  minWidth: "120px",
+  color: vars.color.offWhite,
 });
 
 export const label = style({
@@ -20,14 +21,13 @@ export const label = style({
 
 export const trigger = style({
   alignItems: "center",
-  background: vars.color.white,
-  border: "none",
+  background: vars.color.gray,
   borderRadius: vars.border.radius,
-  boxShadow: vars.boxShadow.light,
+  color: vars.color.offWhite,
+  border: "none",
   cursor: "pointer",
   display: "flex",
   justifyContent: "space-between",
-  outline: "inherit",
   padding: `${vars.spacing.medium} ${vars.spacing.large}`,
   width: "100%",
   ":focus": {

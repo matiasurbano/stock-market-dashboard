@@ -17,11 +17,11 @@ export const FilterBar: React.FC<FilterBarProps> = () => {
             onCountrySelect={(countryCode) => console.log(countryCode)}
             selectedCountryCode={defaultCountryOption}
           />
-          <CountrySelect
+          {/* <CountrySelect
             label=""
             onCountrySelect={(countryCode) => console.log(countryCode)}
             selectedCountryCode={defaultCountryOption2}
-          />
+          /> */}
         </div>
       </div>
     </header>

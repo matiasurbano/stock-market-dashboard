@@ -5,6 +5,7 @@ import {
   Label,
   PolarAngleAxis,
   PolarGrid,
+  PolarRadiusAxis,
   Radar,
   RadarChart,
   ResponsiveContainer,
@@ -54,20 +55,15 @@ export const Snowflake: React.FC<SnowflakeProps> = ({ score }) => {
   return (
     <>
       <ResponsiveContainer aspect={1} width="100%">
-        <RadarChart
-          outerRadius={"80%"}
-          data={chartData}
-          style={{ fontSize: "12px" }}
-        >
+        <RadarChart data={chartData} style={{ fontSize: "12px" }}>
           <PolarGrid gridType="circle" />
           <PolarAngleAxis dataKey="subject" orientation="outer">
             <Label />
           </PolarAngleAxis>
-
           <Radar
             dataKey="successfulChecks"
             fill={fillColor}
-            fillOpacity={0.5}
+            fillOpacity={0.8}
             stroke={fillColor}
             strokeWidth={3}
           />

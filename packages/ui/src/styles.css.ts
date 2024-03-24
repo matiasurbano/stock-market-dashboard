@@ -4,13 +4,9 @@ import { vars } from "./theme.css";
 
 globalStyle("html, body", {
   margin: 0,
-  //   background: "rgb(21, 27, 36)",
+  background: vars.color.black,
+  color: vars.color.offWhite,
   position: "relative",
-});
-
-globalStyle("html", {
-  //   background: vars.color.black,
-  //   color: vars.color.offWhite,
 });
 
 globalStyle("*", {

@@ -11,6 +11,8 @@ export const root = style({
   borderBottomColor: "rgba(255, 255, 255, 0.1)",
   borderBottomStyle: "solid",
   borderBottomWidth: 1,
+  marginBottom: vars.spacing.medium,
+  width: "100%",
 });
 
 export const filters = style({
