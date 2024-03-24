@@ -1,17 +1,8 @@
 import { style } from "@vanilla-extract/css";
-
-const vars = {
-  spacing: {
-    medium: "8px",
-  },
-};
+import { vars } from "@repo/ui/theme";
 
 export const root = style({
-  padding: `0px 0px ${vars.spacing.medium}`,
-  borderBottomColor: "rgba(255, 255, 255, 0.1)",
-  borderBottomStyle: "solid",
-  borderBottomWidth: 1,
-  marginBottom: vars.spacing.medium,
+  height: "50px",
   width: "100%",
 });
 

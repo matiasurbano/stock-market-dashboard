@@ -3,7 +3,8 @@ import { vars } from "@repo/ui/theme";
 
 export const container = style({
   padding: vars.spacing.large,
-  maxWidth: "1500px",
+  maxWidth: vars.breakpoints.xl,
+  minWidth: vars.breakpoints.xs,
   margin: "0 auto",
 });
 
@@ -12,11 +13,6 @@ export const filterBar = style({
   alignItems: "end",
   flexWrap: "wrap",
   gap: vars.spacing.medium,
-  marginBottom: vars.spacing.large,
-});
-
-export const heading = style({
-  fontSize: "2rem",
-  padding: 0,
+  marginTop: vars.spacing.large,
   marginBottom: vars.spacing.large,
 });

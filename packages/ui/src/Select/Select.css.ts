@@ -1,28 +1,37 @@
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { vars } from "../theme.css";
-import * as baseStyles from "../Select/Select.css";
 
-export const root = style([baseStyles.root, {}]);
-export const label = style([baseStyles.label, {}]);
-export const trigger = style([baseStyles.trigger, {}]);
-export const listItemLabel = style([baseStyles.listItemLabel, {}]);
-export const preview = style([baseStyles.preview, {}]);
-
-export const countryIcon = style({
-  height: "1rem",
+export const root = style({
+  width: "100%",
+  maxWidth: "400px",
+  position: "relative",
+  color: vars.color.offWhite,
 });
 
-export const chevron = style({
-  display: "inline",
-  fill: "black",
-  opacity: 0.5,
-  width: "24px",
-  height: "22px",
-  verticalAlign: "middle",
-  margin: "0px",
-  position: "absolute",
-  right: "8px",
+export const label = style({
+  display: "block",
+  marginBottom: vars.spacing.medium,
+});
+
+export const trigger = style({
+  alignItems: "center",
+  background: "rgb(37 43 49)",
+  borderRadius: vars.border.radius,
+  color: vars.color.offWhite,
+  border: "none",
+  cursor: "pointer",
+  display: "flex",
+  justifyContent: "space-between",
+  width: "100%",
+  ":focus": {
+    outline: vars.focus,
+  },
+  height: "32px",
+  paddingTop: "20px",
+  paddingRight: "40px",
+  paddingBottom: "20px",
+  paddingLeft: "20px",
 });
 
 export const listItem = recipe({
@@ -53,6 +62,19 @@ export const listItem = recipe({
   },
 });
 
+export const listItemLabel = style({
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+});
+
+export const preview = style({
+  display: "flex",
+  fontSize: "1rem",
+  gap: vars.spacing.medium,
+  alignItems: "center",
+});
+
 export const list = recipe({
   base: {
     background: vars.color.white,
@@ -65,8 +87,6 @@ export const list = recipe({
     position: "absolute",
     width: "100%",
     zIndex: 10,
-    height: 200,
-    overflow: "scroll",
   },
   variants: {
     isOpen: {

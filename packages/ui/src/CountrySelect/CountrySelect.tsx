@@ -84,7 +84,8 @@ export const CountrySelect: FC<CountrySelectProps> = ({
         <span className={styles.preview}>
           {selectedItem && (
             <>
-              <CountryIcon countryCode={selectedItem?.id || ""} />{" "}
+              <CountryIcon countryCode={selectedItem?.id || ""} />
+              {"  "}
               {selectedItem.name}
             </>
           )}
@@ -110,7 +111,8 @@ export const CountrySelect: FC<CountrySelectProps> = ({
               {...getItemProps({ item, index })}
             >
               <span className={styles.listItemLabel}>
-                <CountryIcon countryCode={item?.id || ""} /> {item.name}
+                <CountryIcon countryCode={item?.id || ""} />
+                {"  "} {item.name}
               </span>
             </li>
           ))}

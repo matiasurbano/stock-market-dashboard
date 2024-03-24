@@ -1,9 +1,17 @@
 import { createGlobalTheme } from "@vanilla-extract/css";
 
 export const vars = createGlobalTheme(":root", {
+  breakpoints: {
+    xs: "300px",
+    sm: "576px",
+    md: "768px",
+    lg: "992px",
+    xl: "1200px",
+  },
   color: {
     primary: "#414d69",
     secondary: "#FF4049",
+    tertiary: "#2394DF",
     black: "#151B24",
     gray: "#151B24",
     offGray: "#CBD5E0",
@@ -14,6 +22,7 @@ export const vars = createGlobalTheme(":root", {
     small: "4px",
     medium: "8px",
     large: "16px",
+    xlarge: "32px",
   },
   border: {
     radius: "8px",

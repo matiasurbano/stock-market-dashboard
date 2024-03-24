@@ -7,6 +7,7 @@ globalStyle("html, body", {
   background: vars.color.black,
   color: vars.color.offWhite,
   position: "relative",
+  fontSize: "14px",
 });
 
 globalStyle("*", {

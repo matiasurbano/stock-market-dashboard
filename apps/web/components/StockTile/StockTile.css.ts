@@ -1,15 +1,20 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "@repo/ui/theme";
 
+export const wrapper = style({
+  borderRadius: "8px",
+  boxShadow: "rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
+});
+
 export const root = style({
   borderRadius: vars.border.radius,
   boxShadow: vars.boxShadow.dark,
   display: "grid",
-  padding: "12px 12px 12px 16px",
   textDecoration: "none",
   color: "inherit",
   transition: "box-shadow 0.2s ease",
   fontSize: ".5rem",
+  padding: vars.spacing.large,
 
   ":hover": {
     boxShadow: vars.boxShadow.dark,

@@ -15,18 +15,20 @@ export const StockTile: React.FC<StockTileProps> = ({
   renderGraph,
 }) => {
   return (
-    <a
-      target="_blank"
-      rel="noreferrer"
-      href={`https://simplywall.st${url}`}
-      className={styles.root}
-      aria-label={`Open ${name} stock page in a new tab`}
-    >
-      <div className={styles.info}>
-        <p className={styles.title}>{name}</p>
-        <p className={styles.subTitle}>{uniqueSymbol}</p>
-      </div>
-      <div className={styles.graph}>{renderGraph()}</div>
-    </a>
+    <div className={styles.wrapper}>
+      <a
+        target="_blank"
+        rel="noreferrer"
+        href={`https://simplywall.st${url}`}
+        className={styles.root}
+        aria-label={`Open ${name} stock page in a new tab`}
+      >
+        <div className={styles.info}>
+          <p className={styles.title}>{name}</p>
+          <p className={styles.subTitle}>{uniqueSymbol}</p>
+        </div>
+        <div className={styles.graph}>{renderGraph()}</div>
+      </a>
+    </div>
   );
 };
