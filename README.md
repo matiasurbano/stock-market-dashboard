@@ -8,7 +8,8 @@ Run the following command:
 
 ```sh
 yarn install
-yarn start
+yarn build
+yarn workspace web dev
 ```
 
 ![alt text](web-app-lighthouse.png)
@@ -45,4 +46,5 @@ yarn start
 
 ### TODOS
 
-- Implement i18n with tje next-intl library
+- Implement i18n with the next-intl library
+- Implement Jest Unitest & E2E tests using TestCafe
