@@ -6,6 +6,7 @@ import { useStocksDetails } from "../../hooks/useStocksDetails";
 import { StockTile } from "../StockTile/StockTile";
 import * as styles from "./Stocks.css";
 import { Button } from "@repo/ui/button";
+import { StocksLoading } from "./StockLoading";
 
 type StocksProps = {};
 
@@ -53,7 +54,7 @@ export const Stocks: React.FC<StocksProps> = () => {
 
   return (
     <>
-      {isLoading && <div>Loading Results</div>}
+      {isLoading && <StocksLoading />}
       {isSuccess && (
         <div className={styles.root}>
           {/* @ts-ignore */}

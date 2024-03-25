@@ -7,6 +7,7 @@
     "./styles": "./src/styles.css.ts",
     "./button": "./src/Button/Button.tsx",
     "./snowflake": "./src/Snowflake/Snowflake.tsx",
+    "./snowflake-loading": "./src/Snowflake/SnowflakeLoading.tsx",
     "./select": "./src/Select/Select.tsx",
     "./country-select": "./src/CountrySelect/CountrySelect.tsx"
   },
