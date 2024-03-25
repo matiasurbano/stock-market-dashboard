@@ -1,6 +1,6 @@
 # Simply Wall St Technical Exercise
 
-This is an official starter Turborepo.
+Author: Matias Urbano
 
 ## Getting started
 
@@ -8,24 +8,41 @@ Run the following command:
 
 ```sh
 yarn install
-yarn dev
+yarn start
 ```
+
+![alt text](web-app-lighthouse.png)
+
+### Tech Stack
+
+- Turborepo & yarn workspaces monorepo
+- Typescript
+- React:
+  - React Query: for data fetching, caching, synchronizing and updating server state
+  - React Context: to avoid prop drilling
+  - React Hooks: DRY data fetching
+  - Infinite Scroll with backend interaction
+  - Recharts for Snowflake chart.
+  - Skeleton UI for loading
+- Nextjs
+- a11y: Screen reader support (ARIA, downshift), Tab navigation
+- Lighthouse score:
+  - 100 Performance
+  - 94 Accessibility
+  - 100 best Practices
+  - 100 SEO
+- Styles/Own Design System: Vanilla Extract Styles
 
 ### Apps and Packages
 
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/types`: a stub React component library shared by both `web` and `docs` applications
-
+- `web`: Next.js + React 18
+- `@repo/ui`:
+  - React component library shared by both `web` app
+  - Share vanilla extract Theme
+- `@repo/types`: Shared types
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### TODOS
 
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+- Implement i18n with tje next-intl library

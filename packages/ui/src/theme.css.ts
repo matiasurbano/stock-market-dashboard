@@ -2,7 +2,7 @@ import { createGlobalTheme } from "@vanilla-extract/css";
 
 export const vars = createGlobalTheme(":root", {
   breakpoints: {
-    xs: "300px",
+    xs: "380px",
     sm: "576px",
     md: "768px",
     lg: "992px",

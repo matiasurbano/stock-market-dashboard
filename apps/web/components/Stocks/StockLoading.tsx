@@ -3,8 +3,6 @@ import { SnowflakeLoading } from "@repo/ui/snowflake-loading";
 import { StockTile } from "../StockTile/StockTile";
 import * as styles from "./Stocks.css";
 
-type StocksLoadingProps = {};
-
 const data = [
   {
     subject: "Value",
@@ -28,7 +26,7 @@ const data = [
   },
 ];
 
-export const StocksLoading: React.FC<StocksLoadingProps> = () => {
+export const StocksLoading: React.FC = () => {
   return (
     <>
       <div className={styles.root}>

@@ -2,9 +2,7 @@ import * as styles from "./StockTile.css";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-type StockTileLoadingProps = {};
-
-export const StockTileLoading: React.FC<StockTileLoadingProps> = () => {
+export const StockTileLoading: React.FC = () => {
   return (
     <div className={styles.wrapper} aria-busy="true">
       <div className={styles.root}>

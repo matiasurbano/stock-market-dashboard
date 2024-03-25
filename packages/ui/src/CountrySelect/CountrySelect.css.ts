@@ -8,7 +8,7 @@ export const label = style([baseStyles.label, {}]);
 export const trigger = style([
   baseStyles.trigger,
   {
-    width: "300px",
+    width: "200px",
   },
 ]);
 export const listItemLabel = style([baseStyles.listItemLabel, {}]);
@@ -68,7 +68,7 @@ export const list = recipe({
     marginTop: vars.spacing.small,
     padding: 0,
     position: "absolute",
-    width: "300px",
+    width: "200px",
     zIndex: 10,
     height: 200,
     overflow: "scroll",
