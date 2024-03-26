@@ -6,6 +6,12 @@ Author: Matias Urbano
 
 Run the following command:
 
+This project use turborepo to build the packages to install turborepo globally run
+
+```sh
+yarn global add turbo
+```
+
 ```sh
 yarn install
 yarn build
