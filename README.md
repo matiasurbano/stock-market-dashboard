@@ -1,4 +1,4 @@
-# Simply Wall St Technical Exercise
+# Stock Marker Dashboard
 
 Author: Matias Urbano
 
@@ -6,7 +6,7 @@ Author: Matias Urbano
 
 Run the following command:
 
-This project use turborepo to build the packages to install turborepo globally run
+This project uses turborepo to build the packages to install turborepo globally run
 
 ```sh
 yarn global add turbo
@@ -36,7 +36,7 @@ yarn workspace web dev
 - Lighthouse score:
   - 100 Performance
   - 94 Accessibility
-  - 100 best Practices
+  - 100 Best Practices
   - 100 SEO
 - Styles/Own Design System: Vanilla Extract Styles
 
@@ -50,7 +50,7 @@ yarn workspace web dev
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-### TODOS
+### Up Next
 
 - Implement i18n with the next-intl library
 - Implement Jest Unitest & E2E tests using TestCafe
